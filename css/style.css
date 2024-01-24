@@ -9,7 +9,7 @@
 
 /* RECIPIENTE CONTENUTO */
 .recipe-content {
-    background-color: aqua;
+    background-color: rgb(13, 255, 0);
     width: 90vw;
     height: 90vh;
     display: flex;
@@ -22,6 +22,7 @@
     background-color: brown;
     display: flex;
     flex-direction: column;
+    border-right: 1px solid aqua;
 }
 
 /* RECIPIENTE MAIN */
@@ -34,13 +35,13 @@
 
 /* RECIPIENTE USER */
 .recipe-user {
-    min-height: 250px;
     background-color: black;
 }
 
 .recipe-chat {
     background-color: blueviolet;
     overflow: auto;
+    height: calc(90vh - 230px);
 }
 
 /* RECIPIENTE CHATUSER */
@@ -53,10 +54,41 @@
 .recipe-message {
     background-color: rgb(221, 130, 20);
     overflow: auto;
+    height: calc(90vh - 160px);
 }
 
 /* RECIPIENTE SCRIVI MESSAGGIO */
 .recipe-writeMess{
     background-color: darkmagenta;
     height: 80px;
+}
+
+.user {
+    height: 80px;
+    background-color: bisque;
+}
+
+.notifications {
+    height: 90px;
+    background-color: blueviolet;
+}
+
+.research {
+    height: 60px;
+    background-color: rgb(246, 255, 127);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-input {
+    background-color: beige;
+    height: 80%;
+    width: 90%;
+}
+
+.chat {
+    background-color: white;
+    border-bottom: 1px solid gray;
+    height: 90px;
 }
