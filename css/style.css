@@ -38,6 +38,7 @@
     background-color: black;
 }
 
+/* RECIPENTE CHAT */
 .recipe-chat {
     background-color: blueviolet;
     overflow: auto;
@@ -63,32 +64,89 @@
     height: 80px;
 }
 
+/* UTENTE */
 .user {
     height: 80px;
-    background-color: bisque;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5px;
 }
 
+/* RECIPEINTE MY AVATAR */
+.recipe-myAvatar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 20px;
+}
+
+/* IMMAGINE UTENTE */
+.my-image {
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* ICONE */
+.icon-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    color: #B1B1B1;
+}
+
+/* NOTIFICHE */
 .notifications {
     height: 90px;
-    background-color: blueviolet;
+    background-color: #8EDAFC;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    gap: 10px;
 }
 
+/* ICONA */
+.notifications i {
+    font-size: 45px;
+    background-color: #ffffff;
+    color: #8EDAFC;
+    border-radius: 50%;
+}
+
+/* RECIPIENTE INFO NOTOFICHE */
+.recipe-notification {
+    display: flex;
+    flex-direction: column;
+}
+
+/* LINK */
+.recipe-notification a {
+    color: #696868;
+    font-weight: 600;
+}
+
+/* RECIPIENTE CERCA */
 .research {
     height: 60px;
-    background-color: rgb(246, 255, 127);
+    background-color: #FAFAFA;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* RECIPIENTE INPUT */
 .recipe-input {
-    background-color: beige;
-    height: 80%;
-    width: 90%;
+   width: 95%;
+   display: flex;
+   justify-content: center;
 }
 
+/* CHAT */
 .chat {
     background-color: white;
     border-bottom: 1px solid gray;
     height: 90px;
 }
+
