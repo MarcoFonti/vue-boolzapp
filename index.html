@@ -19,124 +19,98 @@
     <!-- JAVASCRIPT VUE -->
     <script defer src="js/script.js"></script>
 </head>
-<body> 
-<!-- SFONDO -->
-<div class="back">
-    <!-- CONTENUTO -->
-    <div class="recipe-content">
-        <!-- ASIDE -->
-        <div class="recipe-aside">
-            <!-- UTENTE -->
-            <div class="recipe-user">
-                <!-- RECIPIENTE UTENTE -->
-                <div class="user">
-                    <div class="recipe-myAvatar">
-                        <img class="my-image" src="img/assets/img/avatar_io.jpg" alt="Il mio avatar">
-                        <div>Marco Fonti</div>
+<body>
+<div id="root">
+    <!-- SFONDO -->
+    <div class="back">
+        <!-- CONTENUTO -->
+        <div class="recipe-content">
+            <!-- ASIDE -->
+            <div class="recipe-aside">
+                <!-- UTENTE -->
+                <div class="recipe-user">
+                    <!-- RECIPIENTE UTENTE -->
+                    <div class="user">
+                        <div class="recipe-myAvatar">
+                            <img class="my-image" :src="`img/assets/img/${date.user.avatar}`" :alt="date.user.name">
+                            <div>{{date.user.name}}</div>
+                        </div>
+                        <div class="icon-user">
+                            <i class="fa-solid fa-spinner"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
                     </div>
-                    <div class="icon-user">
-                        <i class="fa-solid fa-spinner"></i>
-                        <i class="fa-solid fa-message"></i>
+                    <!-- RECIPENTE NOTICHE-->
+                    <div class="notifications">
+                        <i class="fa-solid fa-bell-slash "></i>
+                        <div class="recipe-notification">
+                            <div>Ricevi notiche di nuovi messaggi</div>
+                            <a href="#">Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+                    <!-- RECIPENTE CERCA -->
+                    <div class="research">
+                        <div class="recipe-input input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+                    </div>
+                </div>
+                <!-- CHAT -->
+                <div class="recipe-chat">
+                    <div v-for="element in date.contacts" :key="date.contacts.id" class="chat">
+                        <img :src="`img/assets/img/${element.avatar}`" :alt="element.name">
+                        <h6>{{element.name}}</h6>
+                    </div>
+                </div>
+            </div>
+            <!-- MAIN -->
+            <main class="recipe-messageUser">
+                <!-- UTENTE SELEZIONATO -->
+                <div class="recipe-chatUser">
+                    <div class="recipe-infoUser">
+                        <img src="img/assets/img/avatar_1.jpg" alt="Michele">
+                        <div class="user-selected">
+                            <div>Michele</div>
+                            <div class="text-secondary">Ultimo acesso oggi alle</div>
+                        </div>
+                    </div>
+                    <div class="recipe-iconChat">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-                <!-- RECIPENTE NOTICHE-->
-                <div class="notifications">
-                    <i class="fa-solid fa-bell-slash "></i>
-                    <div class="recipe-notification">
-                        <div>Ricevi notiche di nuovi messaggi</div>
-                        <a href="#">Attiva notifiche desktop</a>
+                <!-- RECIPIENTE MESSAGGI -->
+                <div class="recipe-message clearfix">
+                    <div class="message-sent">
+                        <span>Hai maggiato la pizza stasera?</span>
+                        <time>17.13</time>
+                    </div>
+                    <div class="message-sent">
+                        <span>Hai maggiato la pizza stasera?</span>
+                        <time>17.13</time>
+                    </div>
+                    <div class="message-received">
+                        <span>Si</span>
+                        <time>17.30</time>
+                    </div>
+                    <div class="message-received">
+                        <span>Si</span>
+                        <time>17.30</time>
                     </div>
                 </div>
-                <!-- RECIPENTE CERCA -->
-                <div class="research">
-                    <div class="recipe-input input-group">
-                        <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                <!-- SCRIVI MESSAGGIO -->
+                <div class="recipe-writeMess">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <div class="w-100">
+                        <input type="text" class="form-control">
                     </div>
+                    <i class="fa-solid fa-microphone"></i>
                 </div>
-            </div>
-            <!-- CHAT -->
-            <div class="recipe-chat">
-                <div class="chat">
-                    <img src="img/assets/img/avatar_1.jpg" alt="Utente Michele">
-                    <h6>Michele</h6>
-                </div>
-                <div class="chat">
-                    <img src="img/assets/img/avatar_2.jpg" alt="Utente Michele">
-                    <h6>Fabio</h6>
-                </div>
-                <div class="chat">
-                    <img src="img/assets/img/avatar_3.jpg" alt="Utente Michele">
-                    <h6>Samuele</h6>
-                </div>
-                <div class="chat">
-                    <img src="img/assets/img/avatar_4.jpg" alt="Utente Michele">
-                    <h6>Luisa</h6>
-                </div>
-                <div class="chat">
-                    <img src="img/assets/img/avatar_3.jpg" alt="Utente Michele">
-                    <h6>Samuele</h6>
-                </div>
-                <div class="chat">
-                    <img src="img/assets/img/avatar_4.jpg" alt="Utente Michele">
-                    <h6>Luisa</h6>
-                </div>
-                <div class="chat">
-                    <img src="img/assets/img/avatar_3.jpg" alt="Utente Michele">
-                    <h6>Samuele</h6>
-                </div>
-                <div class="chat">
-                    <img src="img/assets/img/avatar_4.jpg" alt="Utente Michele">
-                    <h6>Luisa</h6>
-                </div>
-            </div>
+            </main>
         </div>
-        <!-- MAIN -->
-        <main class="recipe-messageUser">
-            <!-- UTENTE SELEZIONATO -->
-            <div class="recipe-chatUser">
-                <div class="recipe-infoUser">
-                    <img src="img/assets/img/avatar_1.jpg" alt="Utente Michele">
-                    <div class="user-selected">
-                        <div>Michele</div>
-                        <div class="text-secondary">Ultimo acesso oggi alle</div>
-                    </div>
-                </div>
-                <div class="recipe-iconChat">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-paperclip"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
-            <!-- RECIPIENTE MESSAGGI -->
-            <div class="recipe-message clearfix">
-                <div class="message-sent">
-                    <span>Hai maggiato la pizza stasera?</span>
-                    <time>17.13</time>
-                </div>
-                <div class="message-sent">
-                    <span>Hai maggiato la pizza stasera?</span>
-                    <time>17.13</time>
-                </div>
-                <div class="message-received">
-                    <span>Si</span>
-                    <time>17.30</time>
-                </div>
-                <div class="message-received">
-                    <span>Si</span>
-                    <time>17.30</time>
-                </div>
-            </div>
-            <!-- SCRIVI MESSAGGIO -->
-            <div class="recipe-writeMess">
-                <i class="fa-regular fa-face-smile"></i>
-                <div class="w-100">
-                    <input type="text" class="form-control">
-                </div>
-                <i class="fa-solid fa-microphone"></i>
-            </div>
-        </main>
     </div>
 </div>
 </body>
