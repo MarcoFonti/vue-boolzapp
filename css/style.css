@@ -9,7 +9,6 @@
 
 /* RECIPIENTE CONTENUTO */
 .recipe-content {
-    background-color: rgb(13, 255, 0);
     width: 90vw;
     height: 90vh;
     display: flex;
@@ -17,51 +16,11 @@
 
 /* RECIPIENTE ASIDE */
 .recipe-aside {
-    flex-basis: 450px;
+    flex-basis: 400px;
     flex-shrink: 0;
-    background-color: brown;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid aqua;
-}
-
-/* RECIPIENTE MAIN */
-.recipe-messageUser {
-    flex-grow: 1;
-    background-color: blue;
-    display: flex;
-    flex-direction: column;
-}
-
-/* RECIPIENTE USER */
-.recipe-user {
-    background-color: black;
-}
-
-/* RECIPENTE CHAT */
-.recipe-chat {
-    background-color: blueviolet;
-    overflow: auto;
-    height: calc(90vh - 230px);
-}
-
-/* RECIPIENTE CHATUSER */
-.recipe-chatUser {
-    height: 80px;
-    background-color: bisque;
-}
-
-/* RECIPIENTE MESSAGGIO */
-.recipe-message {
-    background-color: rgb(221, 130, 20);
-    overflow: auto;
-    height: calc(90vh - 160px);
-}
-
-/* RECIPIENTE SCRIVI MESSAGGIO */
-.recipe-writeMess{
-    background-color: darkmagenta;
-    height: 80px;
+    border-right: 1px solid #0000ff;
 }
 
 /* UTENTE */
@@ -96,6 +55,7 @@
     font-size: 20px;
     color: #B1B1B1;
 }
+
 
 /* NOTIFICHE */
 .notifications {
@@ -143,10 +103,116 @@
    justify-content: center;
 }
 
+/* RECIPENTE CHAT */
+.recipe-chat {
+    background-color: #ffffff;
+    overflow: auto;
+    height: calc(90vh - 230px);
+}
+
 /* CHAT */
 .chat {
-    background-color: white;
-    border-bottom: 1px solid gray;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eceaea ;
     height: 90px;
+    display: flex;
+    padding: 10px;
+    gap: 15px;
 }
+
+/* IMMAGINI */
+.recipe-chat img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+/* RECIPIENTE MAIN */
+.recipe-messageUser {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* RECIPIENTE CHATUSER */
+.recipe-chatUser {
+    height: 80px;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+/* IMAGINE */
+.recipe-chatUser img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* RECIPENTE INFO UTENTE */
+.recipe-infoUser {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+/* RECIPIENTE ICONE */
+.recipe-iconChat {
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+    color: #B1B1B1;
+    align-items: center;
+}
+
+/* RECIPIENTE MESSAGGIO */
+.recipe-message {
+    background-image: url(../img/assets/img/mine.jpg);
+    background-size: cover;
+    overflow: auto;
+    height: calc(90vh - 160px);
+}
+
+/* RECIPIENTE SCRIVI MESSAGGIO */
+.recipe-writeMess{
+    background-color: #F3EEEA;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0px 20px;
+}
+
+/* ICONE */
+.recipe-writeMess i {
+    font-size: 20px;
+    color: #B1B1B1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
