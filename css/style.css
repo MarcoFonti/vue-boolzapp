@@ -1,0 +1,56 @@
+
+.back {
+    background-image: linear-gradient(green,gray,gray,gray,gray, gray);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-content {
+    background-color: aqua;
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+}
+
+.recipe-aside {
+    flex-basis: 450px;
+    flex-shrink: 0;
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-messageUser {
+    flex-grow: 1;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-user {
+    min-height: 250px;
+    background-color: black;
+    position: sticky;
+}
+
+.recipe-chat {
+    background-color: blueviolet;
+    overflow: auto;
+}
+
+.recipe-chatUser {
+    height: 80px;
+    background-color: bisque;
+}
+
+.recipe-message {
+    background-color: rgb(221, 130, 20);
+    overflow: auto;
+}
+
+.recipe-writeMess{
+    background-color: darkmagenta;
+    height: 80px;
+}
