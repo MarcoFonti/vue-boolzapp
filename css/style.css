@@ -56,7 +56,6 @@
     color: #B1B1B1;
 }
 
-
 /* NOTIFICHE */
 .notifications {
     height: 90px;
@@ -171,6 +170,47 @@
     background-size: cover;
     overflow: auto;
     height: calc(90vh - 160px);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    row-gap: 10px;
+}
+
+/* MESSAGGI INVIATI */
+.message-sent {
+    background-color: #D5F9BA;
+    float:right;
+    padding: 10px;
+    border-radius: 4px;
+    width: 300px;
+    align-self:flex-end;
+    position: relative;
+}
+
+/* ORARIO MESSAGGIO INVIATO */
+.message-sent time {
+    font-size: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+/* MESSAGGI RICEVUTI */
+.message-received {
+    background-color: #ffffff;
+    float: left;
+    padding: 10px;
+    border-radius: 4px;
+    width: 300px;
+    position: relative;
+}
+
+/* ORARIO MESSAGGIO RICEVUTO */
+.message-received time {
+    font-size: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
 }
 
 /* RECIPIENTE SCRIVI MESSAGGIO */
