@@ -5,13 +5,13 @@ console.log('JS DATI OK');
 const data = {
     user: {
       name: 'Nome Utente',
-      avatar: 'avatar_io.jpg'
+      avatar: '_io'
     },
     contacts: [
       {
         id: 1,
         name: 'Michele',
-        avatar: 'avatar_1.jpg',
+        avatar: '_1',
         messages: [
           {
             id: 1,
@@ -36,7 +36,7 @@ const data = {
       {
         id: 2,
         name: 'Fabio',
-        avatar: 'avatar_2.jpg',
+        avatar: '_2',
         messages: [
           {
             id: 1,
@@ -61,7 +61,7 @@ const data = {
       {
         id: 3,
         name: 'Samuele',
-        avatar: 'avatar_3.jpg',
+        avatar: '_3',
         messages: [
           {
             id: 1,
@@ -86,7 +86,7 @@ const data = {
       {
         id: 4,
         name: 'Alessandro B.',
-        avatar: 'avatar_4.jpg',
+        avatar: '_4',
         messages: [
           {
             id: 1,
@@ -105,7 +105,7 @@ const data = {
       {
         id: 5,
         name: 'Alessandro L.',
-        avatar: 'avatar_5.jpg',
+        avatar: '_5',
         messages: [
           {
             id: 1,
@@ -124,7 +124,7 @@ const data = {
       {
         id: 6,
         name: 'Claudia',
-        avatar: 'avatar_6.jpg',
+        avatar: '_6',
         messages: [
           {
             id: 1,
@@ -149,7 +149,7 @@ const data = {
       {
         id: 7,
         name: 'Federico',
-        avatar: 'avatar_7.jpg',
+        avatar: '_7',
         messages: [
           {
             id: 1,
@@ -168,7 +168,7 @@ const data = {
       {
         id: 8,
         name: 'Davide',
-        avatar: 'avatar_8.jpg',
+        avatar: '_8',
         messages: [
           {
             id: 1,

@@ -32,8 +32,8 @@
                     <!-- RECIPIENTE UTENTE -->
                     <div class="user">
                         <div class="recipe-myAvatar">
-                            <img class="my-image" :src="`img/assets/img/${date.user.avatar}`" :alt="date.user.name">
-                            <div>{{date.user.name}}</div>
+                            <img class="my-image" :src="`img/assets/img/avatar${user.avatar}.jpg`" :alt="user.name">
+                            <div>{{user.name}}</div>
                         </div>
                         <div class="icon-user">
                             <i class="fa-solid fa-spinner"></i>
@@ -59,9 +59,11 @@
                 </div>
                 <!-- CHAT -->
                 <div class="recipe-chat">
-                    <div v-for="element in date.contacts" :key="date.contacts.id" class="chat">
-                        <img :src="`img/assets/img/${element.avatar}`" :alt="element.name">
-                        <h6>{{element.name}}</h6>
+                    <div v-for="element in contacts" :key="element.id" class="chat" @click="currentUser(element.id)">
+                        <img :src="`img/assets/img/avatar${element.avatar}.jpg`" :alt="element.name">
+                        <div class="recipe-contacts">
+                            <h6>{{element.name}}</h6>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,11 +71,11 @@
             <main class="recipe-messageUser">
                 <!-- UTENTE SELEZIONATO -->
                 <div class="recipe-chatUser">
-                    <div class="recipe-infoUser">
-                        <img src="img/assets/img/avatar_1.jpg" alt="Michele">
+                    <div v-for="user in active" :key="user.id" class="recipe-infoUser">
+                        <img :src="`img/assets/img/avatar${user.avatar}.jpg`" :alt="user.name">
                         <div class="user-selected">
-                            <div>Michele</div>
-                            <div class="text-secondary">Ultimo acesso oggi alle</div>
+                            <div>{{user.name}}</div>
+                            <div class="text-secondary" >Ultimo acesso: </div>
                         </div>
                     </div>
                     <div class="recipe-iconChat">
@@ -83,22 +85,16 @@
                     </div>
                 </div>
                 <!-- RECIPIENTE MESSAGGI -->
-                <div class="recipe-message clearfix">
-                    <div class="message-sent">
-                        <span>Hai maggiato la pizza stasera?</span>
-                        <time>17.13</time>
-                    </div>
-                    <div class="message-sent">
-                        <span>Hai maggiato la pizza stasera?</span>
-                        <time>17.13</time>
-                    </div>
-                    <div class="message-received">
-                        <span>Si</span>
-                        <time>17.30</time>
-                    </div>
-                    <div class="message-received">
-                        <span>Si</span>
-                        <time>17.30</time>
+                <div class="recipe-image-message clearfix">
+                    <div v-for="info in active" :key="info.id" class="recipe-message">
+                        <div v-for="message in info.messages" :key="message.id" :class="{'message-sent': message.status === 'sent'}">
+                            <span v-if="message.status === 'sent'">{{message.text}}</span>
+                            <time v-if="message.status === 'sent'">{{message.date}}</time>
+                        </div>
+                        <div v-for="message in info.messages" :key="message.id" :class="{'message-received': message.status === 'received'}">
+                            <span v-if="message.status === 'received'">{{message.text}}</span>
+                            <time v-if="message.status === 'received'">{{message.date}}</time>
+                        </div>
                     </div>
                 </div>
                 <!-- SCRIVI MESSAGGIO -->

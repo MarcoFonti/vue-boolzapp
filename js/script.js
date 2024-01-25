@@ -10,9 +10,46 @@ const app = createApp ({
     // USO DATA CON ALL'INTENRO IL RETURN 
     data() {
         return {
-            date: data,
+            user: data.user,
+            contacts: data.contacts,
+            active: ''
         }
+    },
+
+    computed:{
+       
+        selectedUser() {
+          
+            return 
+
+        }
+
+    },
+
+    methods: {
+
+        currentUser(id){
+        const userClick = this.contacts.filter((user) => {
+            if(id !== user.id) {
+                return false
+                } else {
+                    return true
+                }
+            })
+
+            console.log(userClick)
+
+            this.active = userClick
+
+        },
+
+
+        getHours() {
+            
+        }
+
     }
+
 })
 
 // COLLEGO ID 
