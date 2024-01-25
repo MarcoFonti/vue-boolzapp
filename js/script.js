@@ -12,7 +12,9 @@ const app = createApp ({
         return {
             user: data.user,
             contacts: data.contacts,
-            active: ''
+            active: '',
+            write: '',
+
         }
     },
 
@@ -20,14 +22,13 @@ const app = createApp ({
        
         selectedUser() {
           
-            return 
-
         }
 
     },
 
     methods: {
 
+        // CONFRONTO ID 
         currentUser(id){
         const userClick = this.contacts.filter((user) => {
             if(id !== user.id) {
@@ -43,10 +44,43 @@ const app = createApp ({
 
         },
 
+        // CREI MESSAGGIO 
+        createMessages() {
+            const newMessages = 
+            {
+                id: 10,
+                date: '10/01/2020 15:30:55',
+                text: this.write,
+                status: 'sent'
+            }
 
-        getHours() {
+            this.contacts.forEach(element => {
+                element.messages.push(newMessages)
+            });
             
-        }
+        },
+
+        // RICEVI MESSAGGIO
+        receivedMessages() {
+
+            setTimeout(() => {
+
+            const answer = 
+
+            {
+                id: 90,
+                date: '10/01/2020 15:30:55',
+                text: 'Ok',
+                status: 'received'
+            }
+
+            this.contacts.forEach(element => {
+                element.messages.push(answer)
+            });
+
+            },3000)
+            
+        },
 
     }
 

@@ -170,7 +170,6 @@
 .recipe-image-message {
     background-image: url(../img/assets/img/image-whatsapp.webp);
     background-size: cover;
-    background-position: 5%;
     height: calc(90vh - 160px);
 }
 
