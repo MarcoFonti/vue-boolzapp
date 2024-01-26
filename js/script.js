@@ -17,7 +17,9 @@ const app = createApp ({
             // UTENTE SELEZIONATO
             active: 1,
             // TESTO INPUT MESSAGGIO
-            write:''
+            write:'',
+            // TESTO INPUT CERCA
+            searchText:'',
         }
     },
 
@@ -37,6 +39,20 @@ const app = createApp ({
 
         return contactCycle; 
 
+        },
+
+        // CERCA UTENTE 
+        searchUser(){
+            // COPIO ELEMENTI CHE MI SERVONO DA CONTACTS
+            const searchFilter = this.contacts.filter((element) => {
+                // SE IL MIO ELEMENT.NAME INCLUDE SEARCHTEXT
+                if(element.name.toLowerCase().includes(this.searchText.toLowerCase())){
+                    return true
+                } else false
+            })
+
+        return searchFilter;
+            
         }
     },
 

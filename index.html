@@ -54,19 +54,22 @@
                     <div class="research">
                         <div class="recipe-input input-group">
                             <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                            <!-- ! CON V-MODEL INTERAGISCO SIA IN LETTERUA CHE SCRITTURA -->
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" v-model.trim="searchText">
                         </div>
                     </div>
                 </div>
                 <!-- ? CHAT CONTATTI -->
                 <div class="recipe-chat" role="button">
-                    <!-- ! CICLO V-FOR INTERAGENDO CON CONTACTS ED EVENTO -->
-                    <div v-for="singleContact in contacts" :key="singleContact.id" class="chat" v-on:click="active = singleContact.id">
+                    <!-- ! CICLO V-FOR CHE INTERAGISCE CON COMPUTED 'searchUser' ED EVENTO -->
+                    <div v-for="singleContact in searchUser" :key="singleContact.id" class="chat" v-on:click="active = singleContact.id">
                         <img :src="`img/assets/img/avatar${singleContact.avatar}.jpg`" :alt="singleContact.name">
                         <div class="recipe-contacts">
                             <h6>{{singleContact.name}}</h6>
                         </div>
                     </div>
+                    <!-- SE LA LUNGHEZZA DELLA STINGA E' ZERO-->
+                    <div v-show="!searchUser.length" class="text-center">Non ci sono persone con "<span class="text-primary">{{searchText}}</span>"</div>
                 </div>
             </div>
             <!-- MAIN -->
