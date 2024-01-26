@@ -1,3 +1,12 @@
+/* ? UTILITY */
+
+/* ICONE */
+i {
+    cursor: pointer;
+}
+
+/* ! INIZIO STYLE */
+
 /* COLORE SFONDO */
 .back {
     background-image: linear-gradient(#008000 15%,#d8d6d6fd 15%);
@@ -166,13 +175,6 @@
     align-items: center;
 }
 
-/* IMMAGINE WHATSAPP*/
-.recipe-image-message {
-    background-image: url(../img/assets/img/image-whatsapp.webp);
-    background-size: cover;
-    height: calc(90vh - 160px);
-}
-
 /* RECIPIENTE MESSAGGIO */
 .recipe-message {
     background-image: url(../img/assets/img/mine.jpg);
@@ -237,8 +239,16 @@
 
 /* ICONE */
 .recipe-writeMess i {
-    font-size: 20px;
+    font-size: 30px;
     color: #B1B1B1;
+}
+
+.my-smile:hover {
+    color: #dea209;
+}
+
+.my-microphone:active {
+    color: #ff0000;
 }
 
 
