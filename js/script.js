@@ -86,7 +86,7 @@ const app = createApp({
 
 
                 /* SE IL NOME DELL'ELEMENTO TRASFORMATO IN MINUSCOLO, SE QUESTA STRINGA CONTIENE LA STRINGA IMMESSA DALL'UTENTE  */
-                if (element.name.toLowerCase().contains(this.searchText.toLowerCase())) {
+                if (element.name.toLowerCase().includes(this.searchText.toLowerCase())) {
 
 
                     /* RESTITUISCI TRUE (INCLUDI) */
