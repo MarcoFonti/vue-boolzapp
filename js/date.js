@@ -1,7 +1,8 @@
 // CHECK
 console.log('JS DATI OK');
 
-// DATI UTENTE E CONTANTI
+
+/* DATI FORNITI DELL'UTENTE E DEI SUI CONTATTI */
 const data = {
     user: {
       name: 'Nome Utente',

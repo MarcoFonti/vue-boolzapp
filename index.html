@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
     <!-- FONT-AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- BOOTSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- VUE -->
@@ -19,97 +21,105 @@
     <!-- JAVASCRIPT VUE -->
     <script defer src="js/script.js"></script>
 </head>
+
 <body>
-<div id="root">
-    <!-- SFONDO -->
-    <div class="back">
-        <!-- CONTENUTO -->
-        <div class="recipe-content">
-            <!-- ASIDE -->
-            <div class="recipe-aside">
-                <!-- UTENTE -->
-                <div class="recipe-user">
-                    <!-- ? RECIPIENTE UTENTE -->
-                    <div class="user">
-                        <div class="recipe-myAvatar">
-                            <!-- ! INTERAGISCO CON USER -->
-                            <img class="my-image" :src="`img/assets/img/avatar${user.avatar}.jpg`" :alt="user.name">
-                            <div>{{user.name}}</div>
+    <div id="root">
+        <!-- SFONDO -->
+        <div class="back">
+            <!-- CONTENUTO -->
+            <div class="recipe-content">
+                <!-- ASIDE -->
+                <div class="recipe-aside">
+                    <!-- UTENTE -->
+                    <div class="recipe-user">
+                        <!-- RECIPIENTE UTENTE -->
+                        <div class="user">
+                            <div class="recipe-myAvatar">
+                                <!-- RECUPERO INFORMAZIONE UTENTE -->
+                                <img class="my-image" :src="`img/assets/img/avatar${user.avatar}.jpg`" :alt="user.name">
+                                <div>{{user.name}}</div>
+                            </div>
+                            <div class="icon-user">
+                                <i class="fa-solid fa-spinner"></i>
+                                <i class="fa-solid fa-message"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
                         </div>
-                        <div class="icon-user">
-                            <i class="fa-solid fa-spinner"></i>
-                            <i class="fa-solid fa-message"></i>
+                        <!-- RECIPENTE NOTIFICHE -->
+                        <div class="notifications">
+                            <i class="fa-solid fa-bell-slash "></i>
+                            <div class="recipe-notification">
+                                <div>Ricevi notiche di nuovi messaggi</div>
+                                <a href="#">Attiva notifiche desktop</a>
+                            </div>
+                        </div>
+                        <!-- RECIPENTE CERCA -->
+                        <div class="research">
+                            <div class="recipe-input input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <!-- CON DIRETTIVA V-MODEL INTERAGISCO SIA IN LETTERUA CHE SCRITTURA CON LA FUNZIONE DATA() -->
+                                <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat"
+                                    v-model.trim="searchText">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CHAT CONTATTI -->
+                    <div class="recipe-chat" role="button">
+                        <!-- CICLO PER RICUPERARE OGNI SINGOLA CHAT, AL CLICK SU UNA SIGOLA CHAT ACTIVE VIENE RIASSEGNATA CON ID CORRENTE DELLA CHAT -->
+                        <div v-for="singleContact in searchUser" :key="singleContact.id" class="chat"
+                            v-on:click="active = singleContact.id">
+                            <img :src="`img/assets/img/avatar${singleContact.avatar}.jpg`" :alt="singleContact.name">
+                            <div class="recipe-contacts">
+                                <h6>{{singleContact.name}}</h6>
+                            </div>
+                        </div>
+                        <!-- SE NON C'E' LUNGHEZZA NELL'ARRAY DELLA FUNZIONE RICHIAMATA STAMPO MESSAGGIO -->
+                        <div v-show="!searchUser.length" class="text-center">Non ci sono persone con "<span
+                                class="text-primary">{{searchText}}</span>"</div>
+                    </div>
+                </div>
+                <!-- MAIN -->
+                <main class="recipe-messageUser">
+                    <!-- UTENTE SELEZIONATO -->
+                    <div class="recipe-chatUser">
+                        <div class="recipe-infoUser">
+                            <!-- INTERAGISCO CON LA COMPUTED DI NOME 'selectedContact' PER RECUPERARE TUTTE LE INFORMAZIONE DI UN SIGLO CONTATTO -->
+                            <img :src="`img/assets/img/avatar${selectedContact.avatar}.jpg`"
+                                :alt="selectedContact.name">
+                            <div class="user-selected">
+                                <div>{{selectedContact.name}}</div>
+                                <div class="text-secondary">Ultimo acesso:</div>
+                            </div>
+                        </div>
+                        <div class="recipe-iconChat">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
-                    <!-- ? RECIPENTE NOTICHE-->
-                    <div class="notifications">
-                        <i class="fa-solid fa-bell-slash "></i>
-                        <div class="recipe-notification">
-                            <div>Ricevi notiche di nuovi messaggi</div>
-                            <a href="#">Attiva notifiche desktop</a>
+                    <!-- RECIPIENTE MESSAGGI -->
+                    <div class="recipe-message clearfix">
+                        <!-- CICLO PER RECUPERARE DA OGNI CONTATTO I SINGOLI MESSAGGI E IL COLORE DI QUESTI MESSAGGI -->
+                        <!-- INTERAGENDO CON LA COMPUTED 'selectedContact' E LA FUNZIONE 'messageColor' -->
+                        <div v-for="message in selectedContact.messages" :class="messageColor(message.status)">
+                            <span>{{message.text}}</span>
+                            <time>{{message.date}}</time>
                         </div>
                     </div>
-                    <!-- ? RECIPENTE CERCA -->
-                    <div class="research">
-                        <div class="recipe-input input-group">
-                            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <!-- ! CON V-MODEL INTERAGISCO SIA IN LETTERUA CHE SCRITTURA -->
-                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" v-model.trim="searchText">
+                    <!-- SCRIVI MESSAGGIO -->
+                    <div class="recipe-writeMess">
+                        <i class="fa-regular fa-face-smile my-smile"></i>
+                        <div class="w-100">
+                            <!-- CON LA DIRETTIVA V-MODEL INTERAGISCO SIA IN LETTERUA CHE SCRITTURA E AL EVENTO RICHIAMO LE MIE FUNZIONI 'createMessages, receivedMessages' -->
+                            <input type="text" class="form-control" v-model.trim="write"
+                                @keyup.enter="createMessages(); receivedMessages()">
                         </div>
+                        <i class="fa-solid fa-microphone my-microphone"></i>
                     </div>
-                </div>
-                <!-- ? CHAT CONTATTI -->
-                <div class="recipe-chat" role="button">
-                    <!-- ! CICLO V-FOR CHE INTERAGISCE CON COMPUTED 'searchUser' ED EVENTO -->
-                    <div v-for="singleContact in searchUser" :key="singleContact.id" class="chat" v-on:click="active = singleContact.id">
-                        <img :src="`img/assets/img/avatar${singleContact.avatar}.jpg`" :alt="singleContact.name">
-                        <div class="recipe-contacts">
-                            <h6>{{singleContact.name}}</h6>
-                        </div>
-                    </div>
-                    <!-- SE LA LUNGHEZZA DELLA STINGA E' ZERO-->
-                    <div v-show="!searchUser.length" class="text-center">Non ci sono persone con "<span class="text-primary">{{searchText}}</span>"</div>
-                </div>
+                </main>
             </div>
-            <!-- MAIN -->
-            <main class="recipe-messageUser">
-                <!-- ? UTENTE SELEZIONATO -->
-                <div class="recipe-chatUser">
-                    <div class="recipe-infoUser">
-                        <!-- ! INTERAGISCO CON LA COMPUTED DI NOME 'selectedContact' -->
-                        <img :src="`img/assets/img/avatar${selectedContact.avatar}.jpg`" :alt="selectedContact.name">
-                        <div class="user-selected">
-                            <div>{{selectedContact.name}}</div>
-                            <div class="text-secondary" >Ultimo acesso:</div>
-                        </div>
-                    </div>
-                    <div class="recipe-iconChat">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-                </div>
-                <!-- ? RECIPIENTE MESSAGGI -->
-                <div class="recipe-message clearfix">
-                    <!-- ! CICLO V-FOR INTERAGENDO CON LA COMPUTED 'selectedContact' E LA FUNZIONE 'messageColor' -->
-                    <div v-for="message in selectedContact.messages" :class="messageColor(message.status)">
-                        <span>{{message.text}}</span>
-                        <time>{{message.date}}</time>
-                    </div>
-                </div>
-                <!-- ? SCRIVI MESSAGGIO -->
-                <div class="recipe-writeMess">
-                    <i class="fa-regular fa-face-smile my-smile"></i>
-                    <div class="w-100">
-                        <!-- ! CON V-MODEL INTERAGISCO SIA IN LETTERUA CHE SCRITTURA E AL EVENTO RICHIAMO LE MIE FUNZIONI 'createMessages, receivedMessages' -->
-                        <input type="text" class="form-control" v-model.trim="write" @keyup.enter="createMessages(); receivedMessages()">
-                    </div>
-                    <i class="fa-solid fa-microphone my-microphone"></i>
-                </div>
-            </main>
         </div>
     </div>
-</div>
 </body>
+
 </html>

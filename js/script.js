@@ -1,118 +1,207 @@
 // CHECK
 console.log('JS VUE OK', Vue);
 
-// ESTRAPOLO FUNZIONE DA VUE
-const {createApp} = Vue;
 
-// CREO VARIBILE E RICHIAMO LA FUNZIONE
-const app = createApp ({
+/* ESTRAPOLO FUNZIONE DA VUE */
+const { createApp } = Vue;
+
+
+/* CREO VARIBILE E RICHIAMO LA FUNZIONE */
+const app = createApp({
+
+
+    /* NOME PAGINA */
     name: 'WhatsApp',
-    // USO DATA CON ALL'INTENRO IL RETURN 
+
+
+    /* DATI DI BASE DA UTILIZZARE */
     data() {
         return {
-            // DATI UTENTE 
+
+
+            /* DATI UTENTE  */
             user: data.user,
-            // DATI CONTATTI
+
+
+            /* DATI CONTATTI */
             contacts: data.contacts,
-            // UTENTE SELEZIONATO
+
+
+            /* UTENTE SELEZIONATO */
             active: 1,
-            // TESTO INPUT MESSAGGIO
-            write:'',
-            // TESTO INPUT CERCA
-            searchText:'',
+
+
+            /* TESTO INPUT MESSAGGIO */
+            write: '',
+
+
+            /* TESTO INPUT CERCA */
+            searchText: '',
         }
     },
 
-    // COME VORREI CHE ...
+    
+    /* CREO UNA COMPUTED PER INTERAGIRE CON LA FUNZIONE DATA() */
     computed: {
-        // CONTATTO SELEZIONATO
-        selectedContact(){
-            // INDIVIDUO ELEMENTO SPECIFICO
-            const contactCycle = this.contacts.find((element) => {
-                // SE ELEMENTO ID E' IDENTICO
-                if(element.id === this.active) {
-                    return true
-                } else {
-                    return false
-                }   
-            }) 
 
-        return contactCycle; 
+
+        /* CREO UNA COMPUTED CHE MI DA I DATI DEL CONTATTO SELEZIONATO */
+        selectedContact() {
+
+
+            /* RECUPERO ARRAY FORNITO DEI CONTATTI E CON IL METODO FIND RECUPERO ELEMENTO SPECIFICO  */
+            const contactCycle = this.contacts.find((element) => {
+
+
+                /* SE ID DELL'ELEMENTO DELL'ARRAY E' IDENTICO AD ACTIVE */
+                if (element.id === this.active) {
+
+
+                    /* RESTITUSCO ELEMENTO SPECIFICO */
+                    return true
+
+
+                    /* ALTRIMENTI */
+                } else {
+
+
+                    /* RESTITUSCO UNDEFINED */
+                    return false
+                }
+            })
+
+
+            /* RESTITUSCO LA VARIVBILE */
+            return contactCycle;
 
         },
 
-        // CERCA UTENTE 
-        searchUser(){
-            // COPIO ELEMENTI CHE MI SERVONO DA CONTACTS
+
+        /* CREO COMPUTED PER IL CERCA DEL CONTATTO */
+        searchUser() {
+
+
+            /* RECUPERO L'ARRAY FORNITO E CON IL METODO FILTER SELEZIONO SOLO ALCUNI ELEMENTI */
             const searchFilter = this.contacts.filter((element) => {
-                // SE IL MIO ELEMENT.NAME INCLUDE SEARCHTEXT
-                if(element.name.toLowerCase().includes(this.searchText.toLowerCase())){
+
+
+                /* SE IL NOME DELL'ELEMENTO TRASFORMATO IN MINUSCOLO, SE QUESTA STRINGA CONTIENE LA STRINGA IMMESSA DALL'UTENTE  */
+                if (element.name.toLowerCase().contains(this.searchText.toLowerCase())) {
+
+
+                    /* RESTITUISCI TRUE (INCLUDI) */
                     return true
-                } else false
+
+
+                    /* ALTRIMENTI */
+                } else {
+
+
+                    /* RESTITUISCI FALSE (ESCLUDI) */
+                    return false
+                }
+
             })
 
-        return searchFilter;
-            
+
+            /* RESTITUSCO LA VARIBILE (SOLO CON GLI ELEMENTI INCLUSI) */
+            return searchFilter;
+
         }
     },
 
-    // FUNZIONI
-    methods:{
 
-        // COLORE MESSAGGI
+    /* CREO FUNZIONI */
+    methods: {
+
+
+        /* CREO FUNZIONE PER IL COLORE DEI MESSAGGI A CUI PASSO COME ARGOMENTO LO STATO DEL MESSAGGIO */
         messageColor(status) {
-            // SE STATUS E'IDENTICO
-            if(status === 'sent') {
-               return 'message-sent'
+
+
+            /* SE IL MESSAGGIO E' IDENTOCO A SENT (INVIATO DA ME) */
+            if (status === 'sent') {
+
+
+                /* RESTITUISCO QUESTA TIPO DI STRINGA */
+                return 'message-sent'
+
+
+                /* ALTRIMENTI */
             } else {
-               return 'message-received'  
+
+
+                /* RESTITUISCO QUESTA TIPO DI STRINGA */
+                return 'message-received'
             }
         },
 
-        // CREA MESSAGGIO
-        createMessages() {
-            // SE NON C'E' TESTO
-            if(!this.write) return;
 
-            // CREO OGETTO
-            const newMessages = 
+        /* FUNZIONE PER CREAZIONE DEL MESSAGGIO */
+        createMessages() {
+
+
+            /* SE INPUT E' VUOTO E MANDO L'INVIO, BLOCCO L'AVANZAMENTO DEL CODICE */
+            if (!this.write) return;
+
+
+            /* CRO UN OGETTO CON LE CHIAVI CHE MI SERVONO */
+            const newMessages =
             {
+                /* GENERO ID */
                 id: new Date().getTime(),
+                /* GENERO DATA */
                 date: new Date().toLocaleString(),
+                /* ASSEGNO ALLA CHIAVE CIO' CHE SRA SCRITTO NELL'INPUT */
                 text: this.write,
+                /* STATO MESSAGGIO */
                 status: 'sent'
             }
 
-            // METTO OGGETTO NELLA COMPUTED CONTATTO SELEZIONATO
+
+            /* RICHIAMO COMPUTED ED ENTRO NELL'ARRAY MESSAGES E AGGIUNGO IL NUOVO MESSAGGIO CREATO */
             this.selectedContact.messages.push(newMessages);
 
+
+            /* AD OGNI INVIO SVUOTO IL CAMPO */
             this.write = '';
-            
+
         },
 
-        // RICEVI MESSAGGIO
+
+        /* FUNZIONE PER RICEVERE MESSAGGIO */
         receivedMessages() {
 
-            // METODO DOPO TOT SECONDI
+
+            /* DOPO TOT DI SECONDI */
             setTimeout(() => {
 
-            // CREO OGETTO
-            const answer = 
-            {
-                id: new Date().getTime(),
-                date: new Date().toLocaleString() ,
-                text: 'Ok',
-                status: 'received'
-            }
-            // METTO OGGETTO NELLA COMPUTED CONTATTO SELEZIONATO
-            this.selectedContact.messages.push(answer);
 
-            },3000) // RITARDO
-            
+                /* CRO UN OGETTO CON LE CHIAVI CHE MI SERVONO */
+                const answer =
+                {
+                    /* GENERO ID */
+                    id: new Date().getTime(),
+                    /* GENERO DATA */
+                    date: new Date().toLocaleString(),
+                    /* MESSAGGIO DA RICEVERE */
+                    text: 'Ok',
+                    /* STATO MESSAGGIO */
+                    status: 'received'
+                }
+
+
+                /* RICHIAMO COMPUTED ED ENTRO NELL'ARRAY MESSAGES E AGGIUNGO IL NUOVO MESSAGGIO CREATO */
+                this.selectedContact.messages.push(answer);
+
+
+                /* RITARDO */
+            }, 3000)
+
         },
     }
 
 })
 
-// COLLEGO ID 
+/* COLLEGO ID */
 app.mount('#root');
